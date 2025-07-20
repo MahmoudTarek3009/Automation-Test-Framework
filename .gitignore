@@ -39,4 +39,6 @@ build/
 .DS_Store
 
 ### test-outputs ###
-test-outputs/*
+test-outputs/**/*
+!test-outputs/**/
+!test-outputs/**/.gitkeep
