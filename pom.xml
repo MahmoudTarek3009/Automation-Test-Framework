@@ -9,9 +9,105 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <seleniumVersion>4.32.0</seleniumVersion>
+        <testNgVersion>7.11.0</testNgVersion>
+        <sl4jVersion>2.0.17</sl4jVersion>
+        <sl4jAPIVersion>2.0.17</sl4jAPIVersion>
+        <log4jVersion>2.24.3</log4jVersion>
+        <gsonVersion>2.13.1</gsonVersion>
+        <allureVersion>2.29.1</allureVersion>
+        <javaFakerVersion>1.0.2</javaFakerVersion>
+        <surefireVersion>3.1.2</surefireVersion>
+        <aspectj.version>1.9.21</aspectj.version>
+        <commonIOVersion>2.19.0</commonIOVersion>
     </properties>
+<build>
+    <directory>test-outputs/target</directory>
+    <plugins>
+        <!-- Add the following options to your maven-surefire-plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefireVersion}</version>
+            <configuration>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
+            </configuration>
+            <dependencies>
+                <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${aspectj.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${seleniumVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testNgVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${sl4jVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${sl4jAPIVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4jVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gsonVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javaFakerVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allureVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commonIOVersion}</version>
+        </dependency>
+    </dependencies>
+
+
 
 </project>
